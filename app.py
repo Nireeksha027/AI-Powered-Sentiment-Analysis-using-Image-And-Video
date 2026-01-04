@@ -12,6 +12,7 @@ from torchaudio.transforms import MelSpectrogram, AmplitudeToDB
 import gdown
 
 
+MODEL_URL = "https://drive.google.com/uc?id=1RlQHTrDgsVyYMo8LZbJyeJHtTy8TrvB0"
 
 # ─── Flask setup ───
 app = Flask(__name__)
