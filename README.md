@@ -4,7 +4,7 @@ This project is a **multimodal sentiment and emotion analysis system** that dete
 It combines **computer vision, audio processing, and speech analysis** to provide accurate sentiment insights.
 
 
-## 🚀 Features
+## Features
 
 ### Image-Based Emotion Analysis
 - Face detection using OpenCV
@@ -22,7 +22,7 @@ It combines **computer vision, audio processing, and speech analysis** to provid
 
 
 
-## 🧠 Technologies Used
+## Technologies Used
 
 - **Python**
 - **Flask** – Web framework
