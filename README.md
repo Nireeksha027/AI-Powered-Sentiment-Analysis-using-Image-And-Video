@@ -3,8 +3,6 @@
 This project is a **multimodal sentiment and emotion analysis system** that detects human emotions from **images and videos** using deep learning techniques.  
 It combines **computer vision, audio processing, and speech analysis** to provide accurate sentiment insights.
 
-The project follows **industry-standard practices** for handling large datasets and trained models.
-
 
 ## 🚀 Features
 
@@ -52,7 +50,7 @@ The project follows **industry-standard practices** for handling large datasets 
 
 ---
 
-## 🤖 Model Management (Important)
+## Model Management (Important)
 
 Trained model files are **not stored in this GitHub repository** due to GitHub file size limitations.
 
