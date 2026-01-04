@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Generated folders
+uploads/
+faces/
+videos/
+audio/
+
+# Large model files
+models/*.pth
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dataset / sample media
+images and videos/
+
+backup.bundle

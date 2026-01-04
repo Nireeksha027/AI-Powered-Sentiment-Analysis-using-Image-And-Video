@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎬 Video Sentiment Analysis Result</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      text-align: center;
+      padding: 30px;
+    }
+    .container {
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      width: 80%;
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      color: #f08a24;
+    }
+    video {
+      width: 80%;
+      max-height: 400px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .section {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+    .section h3 {
+      color: #444;
+      border-bottom: 2px solid #f08a24;
+      padding-bottom: 5px;
+    }
+    .section p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+      margin-left: 10px;
+    }
+    .final-result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #c0392b;
+      background: #fdf3e7;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 25px;
+    }
+    .back-btn {
+      margin-top: 40px;
+      background: #ff4d6d;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 16px;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .back-btn:hover {
+      background: #e60050;
+    }
+    .timeline-list {
+      margin-left: 20px;
+      font-size: 15px;
+      color: #444;
+      line-height: 1.5;
+    }
+    .timeline-list li {
+      list-style-type: disc;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎥 Video Sentiment Analysis Result</h2>
+    <p><strong>Source:</strong> {{ source_type }}</p>
+
+
+    <video controls>
+      <source src="{{ url_for('video_file', filename=video_filename) }}" type="video/mp4">
+
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="section">
+      <h3>🗣️ Talking Status:</h3>
+      <p>{{ talking_status }}</p>
+    </div>
+
+    <div class="section">
+      <h3>🎵 Tone Analysis (Pitch & Energy):</h3>
+      <p>{{ tone }}</p>
+    </div>
+
+    <div class="section">
+      <h3>📝 Transcribed Speech:</h3>
+      <p>{{ transcription }}</p>
+    </div>
+
+    <div class="section">
+      <h3>😶 Facial Expression(s):</h3>
+      <p>{{ expression }}</p>
+    </div>
+
+    
+
+    <div class="section">
+      <h3>📈 Per-Second Emotion Timeline:</h3>
+      {% if per_second_emotions %}
+        <ul class="timeline-list">
+          {% for second, emotion in per_second_emotions %}
+            <li><strong>{{ second }}s:</strong> {{ emotion }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p style="color:red;">⚠️ No per-second emotions detected. This may happen if the model was unable to extract valid features from the video/audio.</p>
+      {% endif %}
+    </div>
+
+    {% if emotion_frequency %}
+    <div class="section">
+      <h3>📊 Emotion Frequency Summary:</h3>
+      <ul class="timeline-list">
+        {% for emotion, count in emotion_frequency.items() %}
+          <li><strong>{{ emotion }}:</strong> {{ count }} times</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    <div class="final-result">
+      💡 <strong>Overall Sentiment:</strong> {{ sentiment }}
+    </div>
+
+    <div style="margin-top: 30px;">
+      <a href="/" class="back-btn">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

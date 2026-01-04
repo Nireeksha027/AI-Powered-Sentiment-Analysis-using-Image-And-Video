@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Face Analysis Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      text-align: center;
+      padding: 50px;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      width: 85%;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .face-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .face-item {
+      text-align: center;
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 10px;
+      width: 200px;
+    }
+
+    .face-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .face-item p {
+      font-size: 14px;
+      color: #444;
+    }
+
+    h3 {
+      margin-top: 30px;
+    }
+
+    .back-btn {
+      margin-top: 40px;
+      background: #007bff;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 16px;
+      display: inline-block;
+    }
+
+    .back-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🧠Emotion Detection</h1>
+    <p>Unique Faces: {{ unique_faces }} | Duplicate Faces: {{ duplicate_faces }}</p>
+
+    <div class="face-gallery">
+      {% for face in analyzed_data %}
+      <div class="face-item">
+        <img src="{{ face.image_path }}" alt="Face">
+        <p><strong>Emotion:</strong> {{ face.dominant_emotion }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h3>📷 Annotated Image:</h3>
+    <img src="{{ annotated_image }}" alt="Annotated" style="max-width: 300px; border-radius: 10px;">
+
+    <div style="margin-top: 30px;">
+      <a href="/" class="back-btn">← Back to Home</a>
+    </div>
+  </div>
+
+</body>
+</html>
